@@ -12,6 +12,25 @@ class ServiceController{
 
     } 
     async getAll(req, res) {
+        const {brandId, typeDeviceId} = req.query
+        let services;
+        if (!brandId && !typeDeviceId) //якщо не вказані не бренди, ні типи
+        {
+            services = await Service.findAll()
+        }
+        if (brandId && !typeDeviceId) 
+        {
+            services = await Service.findAll({where:{brandId}})
+        }
+        if (!brandId && typeDeviceId) 
+        {
+            services = await Service.findAll({where:{typeDeviceId}})
+        }
+        if (brandId && typeDeviceId) 
+        {
+            services = await Service.findAll({where:{typeDeviceId, brandId}})
+        }
+        return res.json(services)
 
     }
     async getOne(req, res) {
