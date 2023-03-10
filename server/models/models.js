@@ -60,7 +60,7 @@ Service.belongsTo(Brand)
 Service.hasMany(BasketService)
 BasketService.belongsTo(Service)
 
-Service.hasMany(ServiceInfo);
+Service.hasMany(ServiceInfo, {as: 'info'});
 ServiceInfo.belongsTo(Service)
 
 TypeDevice.belongsToMany(Brand, {through: TypeBrand })
