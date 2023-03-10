@@ -52,7 +52,7 @@ class ServiceController{
         const service = await Service.findOne(
             {
                 where: {id},
-                include: [{model: ServiceInfo, as: 'info'}]
+                include: [{model: ServiceInfo, as: 'info'}] 
             },
         )
         return res.json(service)
