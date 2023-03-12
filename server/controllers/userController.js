@@ -18,10 +18,21 @@ class UserController{
         const user = await User.create({email, role, password: hashPassword})
         const basket = await Basket.create({userId: user.id})
         const token = generateJWT(user.id, user.email, user.role)
-        return res.json({token})
+        return res.json({token}) 
 
     }
     async login(req, res) {
+        const {email, password} = req.body
+        const user = await User.findOne({where: {email}})
+        if (!user) {
+            res.status(500).json({ message: 'Користувача не знайдено' });
+        }
+        let comparePassword = bcrypt.compareSync(password, user.password)
+        if (!comparePassword) {
+            res.status(500).json({ message: 'Невірний пароль' });
+        }
+        const token = generateJWT(user.id, user.email, user.role)
+        return res.json({token})  
 
     }
     async check(req, res) {
