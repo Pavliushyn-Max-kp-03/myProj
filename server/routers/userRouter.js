@@ -5,8 +5,7 @@ const checkAuth = require('../errors/checkAuth')
 
 router.post('/registration', userController.registration)
 router.post('/login', userController.login)
-router.get('/auth', checkAuth, userController.check /*(req, res) => {
-    res.json({message: 'Hello w'})
-}*/)
+router.get('/auth', checkAuth, userController.check )
 
-module.exports = router
+
+module.exports = router 

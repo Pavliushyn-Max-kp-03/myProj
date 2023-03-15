@@ -11,6 +11,13 @@ class TypeController{
         return res.json(types)
 
     }
+    async delete(req, res) {
+        const {id} = req.params
+        const result = await Brand.destroy({where: {id}})
+        return res.status(200).json({
+            message: 'deleted', 
+          });
+    }
 }
 
 module.exports = new TypeController()

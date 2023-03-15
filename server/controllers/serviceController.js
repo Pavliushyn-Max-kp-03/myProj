@@ -58,6 +58,6 @@ class ServiceController{
         return res.json(service)
         
     }
-}
+} 
 
 module.exports = new ServiceController()
