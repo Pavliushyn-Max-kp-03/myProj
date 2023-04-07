@@ -8,4 +8,4 @@ router.post('/login', userController.login)
 router.get('/auth', checkAuth, userController.check )
 
 
-module.exports = router 
+module.exports = router   

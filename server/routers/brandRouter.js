@@ -7,4 +7,4 @@ router.post('/', checkRole("ADMIN"), brandController.create)
 router.get('/', brandController.getAll)
 router.delete('/:id', checkRole("ADMIN"), brandController.delete)
 
-module.exports = router
+module.exports = router 
