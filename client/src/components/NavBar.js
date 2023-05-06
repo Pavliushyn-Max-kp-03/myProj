@@ -16,8 +16,8 @@ return (
           <NavLink style={{color:"white"}} to={SHOP_ROUTE}>FixThis</NavLink>
           { user.isAuth ?
           <Nav className="ml-auto" style={{color:"white"}}>
-            <Button variant={"outline-light"}>Адмін панель</Button>
-            <Button variant={"outline-light"} className={"ml-4"} >Вхід</Button>
+            <Button variant={"outline-light"} className="me-2">Адмін панель</Button>
+            <Button variant={"outline-light"} >Вхід</Button>
           </Nav>
           :
           <Nav className="ml-auto" style={{color:"white"}}>
