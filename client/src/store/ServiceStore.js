@@ -5,6 +5,8 @@ export default class ServiceStore {
         this._types = [
             {id:1, name:"Fridges"},
             {id:2, name:"Smartphones"},
+            {id:3, name:"TV"},
+            {id:4, name:"Notepads"}
         ]
         this._brands = [
             {id:1, name:"Samsung"},
@@ -16,6 +18,7 @@ export default class ServiceStore {
             {id:3, name: "Change battery", price:21000, img: "https://occ-0-325-1567.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABbFI2wcwiGkHDdGWaw58hWgLETOBsbqqv6GbKnZFn3s_Y4fjw0Ys9DNYD5txnfV3oj9tgsBeaSnPcBOwQqQnpHVqHeQr9FtvVzaL.jpg?r=776"},
             {id:4, name: "Change battery", price:21000, img: "https://occ-0-325-1567.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABbFI2wcwiGkHDdGWaw58hWgLETOBsbqqv6GbKnZFn3s_Y4fjw0Ys9DNYD5txnfV3oj9tgsBeaSnPcBOwQqQnpHVqHeQr9FtvVzaL.jpg?r=776"}
         ]
+        this._selectedType = {}
         makeAutoObservable(this)
     }
 
@@ -28,6 +31,9 @@ export default class ServiceStore {
     setServices(services) {
         this._services = services
     }
+    setSelectedType(type) {
+        this._selectedType = type
+    }
     get types() {
         return this._types
     }
@@ -36,6 +42,9 @@ export default class ServiceStore {
     }
     get services() {
         return this._services
+    }
+    get selectedType() {
+        return this._selectedType
     }
 
    
