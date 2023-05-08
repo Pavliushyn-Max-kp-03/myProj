@@ -9,6 +9,7 @@ const TypeBar = observer(() => {
     <ListGroup>
         {service.types.map(type =>
             <ListGroup.Item
+            style={{cursor: 'pointer'}}
             active={type.id === service.selectedType.id}
             onClick={() => service.setSelectedType(type)}
             key={type.id}
