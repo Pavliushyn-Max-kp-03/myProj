@@ -59,10 +59,10 @@ const CreateService = ({ show, onHide }) => {
                     {info.map((i) => (
                         <Row className="mt-4" key={i.number}>
                             <Col md={4}>
-                                <Form.Control placeholder="Введіть назву додаткової інформації" />
+                                <Form.Control placeholder="Назва" />
                             </Col>
                             <Col md={4}>
-                                <Form.Control placeholder="Введіть опис додаткової інформації" />
+                                <Form.Control placeholder="Опис" />
                             </Col>
                             <Col md={4}>
                                 <Button
