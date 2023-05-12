@@ -18,6 +18,8 @@ const Auth = () => {
             const response = await registration(email, password);
             console.log(response);
         }
+        console.log(5);
+        // const response = await registration(email, password);
     };
     return (
         <Container
