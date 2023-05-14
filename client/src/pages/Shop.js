@@ -7,12 +7,14 @@ import BrandBar from "../components/BrandBar";
 import ServiceList from "../components/ServiceList";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
-import { fetchTypes } from "../http/deviceApi";
+import { fetchTypes, fetchBrands, fetchServices } from "../http/serviceApi";
 
 const Shop = observer(() => {
     const { service } = useContext(Context);
     useEffect(() => {
         fetchTypes().then((data) => service.setTypes(data));
+        fetchBrands().then((data) => service.setBrands(data));
+        fetchServices().then((data) => service.setServices(data.rows));
     }, []);
     return (
         <Container>
