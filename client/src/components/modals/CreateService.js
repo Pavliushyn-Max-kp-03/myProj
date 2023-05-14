@@ -6,12 +6,18 @@ import { Context } from "../../index";
 
 const CreateService = ({ show, onHide }) => {
     const { service } = useContext(Context);
+    const [name, setName] = useState("");
+    const [price, setPrice] = useState(0);
+    const [file, setFile] = useState(null);
     const [info, setInfo] = useState([]);
     const addInfo = () => {
         setInfo([...info, { title: "", description: "", number: Date.now() }]);
     };
     const removeInfo = (number) => {
         setInfo(info.filter((i) => i.number !== number));
+    };
+    const selectFile = (e) => {
+        setFile(e.target.files[0]);
     };
     return (
         <Modal show={show} onHide={onHide} size="lg" centered>
@@ -43,15 +49,23 @@ const CreateService = ({ show, onHide }) => {
                         </Dropdown.Menu>
                     </Dropdown>
                     <Form.Control
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         className="mt-3"
                         placeholder="Введіть назву сервісу"
                     />
                     <Form.Control
+                        value={price}
+                        onChange={(e) => setPrice(Number(e.target.value))}
                         className="mt-3"
                         placeholder="Введіть ціну сервісу"
                         type="number"
                     />
-                    <Form.Control className="mt-3" type="file" />
+                    <Form.Control
+                        className="mt-3"
+                        type="file"
+                        onChange={selectFile}
+                    />
                     <hr />
                     <Button variant={"outline-dark"} onClick={addInfo}>
                         Додати додаткову інформацію
