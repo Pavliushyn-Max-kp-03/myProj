@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 import bigStar from "../assets/bigStar.png";
 import { useParams } from "react-router-dom";
+import { fetchOneService } from "../http/serviceApi";
 
 const ServicePage = () => {
     /*const service = {id:1, name: "Change battery", price:21000, img: "https://occ-0-325-1567.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABbFI2wcwiGkHDdGWaw58hWgLETOBsbqqv6GbKnZFn3s_Y4fjw0Ys9DNYD5txnfV3oj9tgsBeaSnPcBOwQqQnpHVqHeQr9FtvVzaL.jpg?r=776"}
@@ -21,13 +22,19 @@ const ServicePage = () => {
   ]*/
 
     const [service, setService] = useState({ info: [] });
-    const params = useParams();
-    console.log(params);
+    const { id } = useParams();
+    useEffect(() => {
+        fetchOneService(id).then((data) => setService(data));
+    }, []);
     return (
         <Container className="mt-3">
             <Row>
                 <Col md={4}>
-                    <Image width={300} height={300} src={service.img} />
+                    <Image
+                        width={300}
+                        height={300}
+                        src={process.env.REACT_APP_API_URL + service.img}
+                    />
                 </Col>
                 <Col md={4}>
                     <Form className="d-flex flex-column align-items-center">
