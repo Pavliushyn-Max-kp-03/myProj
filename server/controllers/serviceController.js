@@ -14,7 +14,7 @@ class ServiceController{
                 ServiceInfo.create({
                     title: i.title,
                     description: i.description,
-                    deviceId: device.id
+                    serviceId: service.id
                 })
             )
         }
