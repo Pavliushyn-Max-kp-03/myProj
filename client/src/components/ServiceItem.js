@@ -21,7 +21,7 @@ const ServiceItem = ({ service }) => {
                     src={process.env.REACT_APP_API_URL + service.img}
                 />
                 <div className="text-black-50 mt-1 d-flex justify-content-between align-items-center">
-                    <div>Samsung</div>
+                    <div>{service.price}</div>
                 </div>
                 <div>{service.name}</div>
             </Card>
