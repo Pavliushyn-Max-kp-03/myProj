@@ -15,11 +15,23 @@ const Shop = observer(() => {
     useEffect(() => {
         fetchTypes().then((data) => service.setTypes(data));
         fetchBrands().then((data) => service.setBrands(data));
-        fetchServices().then((data) => {
+        fetchServices(null, null, 1, 3).then((data) => {
             service.setServices(data.rows);
             service.setTotalCount(data.count);
         });
     }, []);
+
+    useEffect(() => {
+        fetchServices(
+            service.selectedType.id,
+            service.selectedBrand.id,
+            service.page,
+            3
+        ).then((data) => {
+            service.setServices(data.rows);
+            service.setTotalCount(data.count);
+        });
+    }, [service.page, service.selectedType, service.selectedBrand]);
     return (
         <Container>
             <Row className="mt-2">

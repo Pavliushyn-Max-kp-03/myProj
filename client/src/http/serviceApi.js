@@ -1,5 +1,4 @@
 import { $authHost, $host } from "./index";
-import jwt_decode from "jwt-decode";
 
 export const createType = async (type) => {
     const { data } = await $authHost.post("api/type", type);
@@ -16,15 +15,8 @@ export const createBrand = async (brand) => {
     return data;
 };
 
-export const fetchBrands = async (typeId, brandId, page, limit = 5) => {
-    const { data } = await $host.get("api/brand", {
-        params: {
-            typeId,
-            brandId,
-            page,
-            limit,
-        },
-    });
+export const fetchBrands = async () => {
+    const { data } = await $host.get("api/brand");
     return data;
 };
 
@@ -33,8 +25,15 @@ export const createService = async (service) => {
     return data;
 };
 
-export const fetchServices = async () => {
-    const { data } = await $host.get("api/service");
+export const fetchServices = async (typeId, brandId, page, limit = 5) => {
+    const { data } = await $host.get("api/service", {
+        params: {
+            typeId,
+            brandId,
+            page,
+            limit,
+        },
+    });
     return data;
 };
 

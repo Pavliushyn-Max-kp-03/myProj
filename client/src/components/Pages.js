@@ -5,11 +5,22 @@ import Pagination from "react-bootstrap/Pagination";
 
 const Pages = observer(() => {
     const { service } = useContext(Context);
-    const pages = [1, 2, 3];
+    //const pages = [1, 2, 3];
+    const pageCount = Math.ceil(service.totalCount / service.limit);
+    const pages = [];
+    for (let i = 0; i < pageCount; i++) {
+        pages.push(i + 1);
+    }
     return (
         <Pagination className="mt-3">
             {pages.map((page) => (
-                <Pagination.Item>{page}</Pagination.Item>
+                <Pagination.Item
+                    key={page}
+                    active={service.page === page}
+                    onClick={() => service.setPage(page)}
+                >
+                    {page}
+                </Pagination.Item>
             ))}
         </Pagination>
     );
