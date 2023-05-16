@@ -40,7 +40,7 @@ const CreateService = observer(({ show, onHide }) => {
         formData.append("price", `${price}`);
         formData.append("img", file);
         formData.append("brandId", service.selectedBrand.id);
-        formData.append("typeId", service.selectedType.id);
+        formData.append("typeDeviceId", service.selectedType.id);
         formData.append("info", JSON.stringify(info));
         createService(formData).then((data) => onHide());
     };

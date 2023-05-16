@@ -25,10 +25,10 @@ export const createService = async (service) => {
     return data;
 };
 
-export const fetchServices = async (typeId, brandId, page, limit = 5) => {
+export const fetchServices = async (typeDeviceId, brandId, page, limit = 5) => {
     const { data } = await $host.get("api/service", {
         params: {
-            typeId,
+            typeDeviceId,
             brandId,
             page,
             limit,
